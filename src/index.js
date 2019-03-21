@@ -12,7 +12,7 @@ mongoose.connect('mongodb://sandro:280498fe@ds145395.mlab.com:45395/dbappai',{
     useNewUrlParser: true
 })
 
-app.use((req, res, next) => {
+server.use((req, res, next) => {
     req.io = io
     return next()
 })
