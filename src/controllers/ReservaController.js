@@ -11,7 +11,7 @@ module.exports = {
     },
     async store(req, res){
         const reserva = await Reserva.create(req.body)
-        req.io.emit('reserva', reserva)
+        req.socket.emit('reserva', reserva)
         return res.json(reserva)
     },
     async remove(req, res){
@@ -20,7 +20,7 @@ module.exports = {
             if( !reserva ){
                 return res.status(404).send('Usuario não encontrado')
             } else{
-                req.io.emit('reservaApagada', reserva)
+                req.socket.emit('reservaApagada', reserva)
                 res.status(204).send('Deletado')
 
             }
